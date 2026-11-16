@@ -26,22 +26,38 @@ async function renderQuizList(container) {
     }
 
     html += '<div class="quiz-list">';
-    // جلب تفاصيل كل اختبار لعرض العنوان
+    let hasValidQuizzes = false;
+
+    // جلب تفاصيل كل اختبار لعرض العنوان (مع حماية ضد الملفات الناقصة)
     for (const qSlug of manifest.quizzes) {
-      const quiz = await getQuiz(qSlug);
-      html += `
-        <a href="quiz.html?slug=${quiz.slug}" class="quiz-list-card">
-          <h2>${quiz.title}</h2>
-          <p>${quiz.description}</p>
-          <span class="btn btn--primary">ابدأ الاختبار</span>
-        </a>
-      `;
+      try {
+        const quiz = await getQuiz(qSlug);
+        html += `
+          <a href="quiz.html?slug=${quiz.slug}" class="quiz-list-card">
+            <h2>${quiz.title}</h2>
+            <p>${quiz.description}</p>
+            <span class="btn btn--primary">ابدأ الاختبار</span>
+          </a>
+        `;
+        hasValidQuizzes = true;
+      } catch (err) {
+        // إذا لم يوجد ملف اختبار، نتجاهله بهدوء ولا نكسر الصفحة
+        console.warn(`تنبيه: لم يتم العثور على ملف الاختبار: ${qSlug}.json`);
+      }
     }
+    
     html += '</div>';
+
+    if (!hasValidQuizzes) {
+       container.innerHTML = '<h1 class="page-title">الاختبارات التثقيفية</h1><p class="search-hint">جاري إعداد الاختبارات قريباً...</p>';
+       return;
+    }
+
     container.innerHTML = html;
 
   } catch (error) {
-    container.innerHTML = '<p class="error-text">حدث خطأ أثناء تحميل الاختبارات.</p>';
+    container.innerHTML = '<p class="error-text">حدث خطأ أثناء تحميل قائمة الاختبارات.</p>';
+    console.error(error);
   }
 }
 
@@ -83,7 +99,6 @@ async function renderQuiz(container, slug) {
 
     container.innerHTML = html;
 
-    // التعامل مع إرسال الإجابات
     const form = document.getElementById('quiz-form');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -92,6 +107,7 @@ async function renderQuiz(container, slug) {
 
   } catch (error) {
     container.innerHTML = '<p class="error-text">لم يتم العثور على الاختبار المطلوب.</p>';
+    console.error(error);
   }
 }
 
@@ -131,6 +147,6 @@ function calculateResult(quiz, form) {
   `;
   
   resultContainer.style.display = 'block';
-  form.style.display = 'none'; // إخفاء النموذج بعد الإرسال
+  form.style.display = 'none'; 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
