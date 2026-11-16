@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>البحث | دربك</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('darbak:theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = (stored === 'dark' || stored === 'light') ? stored : (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">تخطَّ إلى المحتوى الرئيسي</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="دربك — الصفحة الرئيسية">
+        <span class="brand__mark" aria-hidden="true">دربك</span>
+        <span class="brand__name">DARBAK</span>
+      </a>
+      <nav class="site-nav" aria-label="التنقل الرئيسي">
+        <ul class="site-nav__list">
+          <li><a href="index.html" class="site-nav__link">الرئيسية</a></li>
+          <li><a href="search.html" class="site-nav__link" aria-current="page">البحث</a></li>
+          <li><a href="quiz.html" class="site-nav__link">الاختبارات</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي" aria-pressed="false">
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="main" role="main">
+    <div class="container">
+      <h1 class="page-title">البحث في دربك</h1>
+      
+      <!-- نموذج البحث -->
+      <form id="search-form" class="search-form" role="search">
+        <label for="search-input" class="sr-only">ابحث عن مرض، عرض، أو معلومة صحية</label>
+        <input 
+          type="search" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="ابحث عن مرض، عرض، أو معلومة صحية..." 
+          autocomplete="off"
+          required
+        >
+        <button type="submit" class="btn btn--primary">بحث</button>
+      </form>
+
+      <!-- حاوية النتائج -->
+      <div id="search-results" aria-live="polite">
+        <p class="search-hint">اكتب كلمة في الأعلى للبحث في كافة محتويات المنصة.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="site-footer__disclaimer">⚕ دربك منصة تثقيف صحي فقط، ولا تُغني عن استشارة الطبيب المختص.</p>
+      <p class="site-footer__copy">© <span id="year">2026</span> دربك | DARBAK</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from './js/theme.js';
+    import { initSearchPage } from './js/pages/search.js';
+    
+    initTheme();
+    initSearchPage();
+    
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
