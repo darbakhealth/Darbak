@@ -30,7 +30,7 @@
         <span class="brand__mark" aria-hidden="true">دربك</span>
         <span class="brand__name">DARBAK</span>
       </a>
-      <nav class="site-nav" aria-label="التنقل الرئيسي">
+      <nav class="site-nav" id="site-nav" aria-label="التنقل الرئيسي">
         <ul class="site-nav__list">
           <li><a href="index.html" class="site-nav__link">الرئيسية</a></li>
           <li><a href="search.html" class="site-nav__link" aria-current="page">البحث</a></li>
@@ -38,6 +38,11 @@
         </ul>
       </nav>
       <div class="site-header__actions">
+        <button type="button" class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="فتح القائمة" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
         <button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي" aria-pressed="false">
           <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -50,21 +55,12 @@
     <div class="container">
       <h1 class="page-title">البحث في دربك</h1>
       
-      <!-- نموذج البحث -->
       <form id="search-form" class="search-form" role="search">
         <label for="search-input" class="sr-only">ابحث عن مرض، عرض، أو معلومة صحية</label>
-        <input 
-          type="search" 
-          id="search-input" 
-          class="search-input" 
-          placeholder="ابحث عن مرض، عرض، أو معلومة صحية..." 
-          autocomplete="off"
-          required
-        >
+        <input type="search" id="search-input" class="search-input" placeholder="ابحث عن مرض، عرض، أو معلومة صحية..." autocomplete="off" required>
         <button type="submit" class="btn btn--primary">بحث</button>
       </form>
 
-      <!-- حاوية النتائج -->
       <div id="search-results" aria-live="polite">
         <p class="search-hint">اكتب كلمة في الأعلى للبحث في كافة محتويات المنصة.</p>
       </div>
@@ -87,6 +83,15 @@
     
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const nav = document.getElementById('site-nav');
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+      });
+    }
   </script>
 </body>
 </html>
