@@ -553,3 +553,37 @@ html[data-theme="light"] .theme-toggle__moon { display: none; }
   margin: 0;
   line-height: var(--lh-base);
 }
+
+/* ============================================================
+   9. HOME SEARCH BOX
+   ============================================================ */
+.home-search-form {
+  display: flex;
+  gap: var(--space-2);
+  max-width: 600px;
+  margin-inline: auto;
+  margin-block-start: var(--space-6);
+}
+
+.home-search-input {
+  flex-grow: 1;
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-base);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.home-search-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(22, 124, 128, 0.15);
+}
+
+.home-search-form .btn {
+  border-radius: var(--radius-full);
+  padding-inline: var(--space-6);
+}
