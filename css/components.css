@@ -1,0 +1,106 @@
+/* ==========================================================================
+   DARBAK — Components Styles
+   ========================================================================== */
+
+/* ---------- Disease Grid ---------- */
+.diseases-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-block: var(--space-8);
+}
+
+@media (min-width: 640px) {
+  .diseases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .diseases-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Disease Card ---------- */
+.disease-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+  height: 100%;
+}
+
+.disease-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent);
+  text-decoration: none;
+}
+
+.disease-card__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-2);
+  color: var(--color-accent);
+  border-radius: var(--radius-md);
+  margin-block-end: var(--space-4);
+}
+
+.disease-card__title {
+  font-size: var(--fs-lg);
+  margin-block-end: var(--space-2);
+  color: var(--color-primary);
+}
+
+.disease-card__tagline {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  flex-grow: 1;
+  margin-block-end: var(--space-4);
+}
+
+.disease-card__action {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--color-accent);
+}
+
+/* ---------- Medical Disclaimer ---------- */
+.medical-disclaimer {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  background: #FFF4ED; /* Light orange/red tint for warning */
+  border: 1px solid #FFD8A8;
+  border-radius: var(--radius-md);
+  margin-block: var(--space-6);
+  color: #7C2D12;
+}
+
+[data-theme="dark"] .medical-disclaimer {
+  background: #3B1A10;
+  border-color: #7C2D12;
+  color: #FED7AA;
+}
+
+.medical-disclaimer__icon {
+  font-size: var(--fs-xl);
+  line-height: 1;
+}
+
+.medical-disclaimer__text {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+}
