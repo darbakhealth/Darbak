@@ -440,4 +440,116 @@ html[data-theme="light"] .theme-toggle__moon { display: none; }
 }
 .disease-sources li {
   margin-block-end: var(--space-2);
+ 
+}
+
+/* ============================================================
+   8. SEARCH PAGE
+   ============================================================ */
+.page-title {
+  text-align: center;
+  color: var(--color-primary);
+  margin-block-end: var(--space-6);
+}
+
+.search-form {
+  display: flex;
+  gap: var(--space-2);
+  max-width: 700px;
+  margin-inline: auto;
+  margin-block-end: var(--space-8);
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-base);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(22, 124, 128, 0.2);
+}
+
+.btn {
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: var(--fw-bold);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-text-invert);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.search-hint {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--fs-md);
+  padding-block: var(--space-8);
+}
+
+.search-results-title {
+  font-size: var(--fs-lg);
+  color: var(--color-primary);
+  margin-block-end: var(--space-4);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.search-result-card {
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.search-result-card:hover {
+  border-color: var(--color-accent);
+  transform: translateX(-4px); /* حركة بسيطة لليسار (RTL) */
+  text-decoration: none;
+}
+
+.search-result-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block-end: var(--space-2);
+  color: var(--color-primary);
+}
+
+.search-result-card__badge {
+  font-size: var(--fs-xs);
+  background: var(--color-surface-2);
+  color: var(--color-accent);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.search-result-card__text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: var(--lh-base);
 }
