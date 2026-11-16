@@ -1,0 +1,16 @@
+{
+  "diseases": [
+    "diabetes",
+    "hypertension",
+    "heart-disease",
+    "asthma",
+    "chronic-kidney-disease"
+  ],
+  "quizzes": [
+    "diabetes-basics",
+    "hypertension-basics",
+    "heart-basics",
+    "asthma-basics",
+    "kidney-basics"
+  ]
+}
