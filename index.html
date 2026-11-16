@@ -12,10 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
 
-  <!-- Styles (ملف واحد فقط الآن) -->
+  <!-- Styles (ملف واحد فقط) -->
   <link rel="stylesheet" href="css/styles.css">
 
-  <!-- Theme Init (لمنع وميض الوضع الليلي) -->
+  <!-- Theme Init -->
   <script>
     (function () {
       try {
@@ -70,6 +70,19 @@
           دربك منصة تثقيف صحي رقمي تقدّم معلومات موثوقة ومبسّطة عن الأمراض المزمنة
           لمساعدة المرضى وأسرهم ومقدمي الرعاية والأشخاص ذوي الإعاقة.
         </p>
+
+        <!-- مربع البحث في الصفحة الرئيسية -->
+        <form action="search.html" method="get" class="home-search-form" role="search">
+          <input 
+            type="search" 
+            name="q" 
+            class="home-search-input" 
+            placeholder="ابحث عن مرض، عرض، أو معلومة صحية..." 
+            required
+          >
+          <button type="submit" class="btn btn--primary">بحث</button>
+        </form>
+
       </section>
 
       <!-- حاوية التنبيه الطبي (يملؤها الجافاسكريبت) -->
