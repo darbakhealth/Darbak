@@ -587,3 +587,18 @@ html[data-theme="light"] .theme-toggle__moon { display: none; }
   border-radius: var(--radius-full);
   padding-inline: var(--space-6);
 }
+
+/* ============================================================
+   10. FIX INPUT TEXT COLOR (DARK MODE)
+   ============================================================ */
+input, textarea {
+  color: var(--color-text) !important;
+  caret-color: var(--color-accent);
+  -webkit-text-fill-color: var(--color-text);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-muted) !important;
+  -webkit-text-fill-color: var(--color-text-muted);
+  opacity: 1;
+}
