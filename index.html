@@ -12,10 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
 
-  <!-- Styles (تم دمج base و components في styles.css) -->
-  <link rel="stylesheet" href="css/tokens.css">
+  <!-- Styles (ملف واحد فقط الآن) -->
   <link rel="stylesheet" href="css/styles.css">
 
+  <!-- Theme Init (لمنع وميض الوضع الليلي) -->
   <script>
     (function () {
       try {
@@ -30,12 +30,14 @@
 <body>
   <a href="#main" class="skip-link">تخطَّ إلى المحتوى الرئيسي</a>
 
+  <!-- ===================== HEADER ===================== -->
   <header class="site-header" role="banner">
     <div class="container site-header__inner">
       <a href="index.html" class="brand" aria-label="دربك — الصفحة الرئيسية">
         <span class="brand__mark" aria-hidden="true">دربك</span>
         <span class="brand__name">DARBAK</span>
       </a>
+      
       <nav class="site-nav" aria-label="التنقل الرئيسي">
         <ul class="site-nav__list">
           <li><a href="index.html" class="site-nav__link" aria-current="page">الرئيسية</a></li>
@@ -43,15 +45,22 @@
           <li><a href="quiz.html" class="site-nav__link">الاختبارات</a></li>
         </ul>
       </nav>
+
       <div class="site-header__actions">
         <button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي" aria-pressed="false">
-          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
         </button>
       </div>
     </div>
   </header>
 
+  <!-- ===================== MAIN ===================== -->
   <main id="main" class="main" role="main">
     <div class="container">
 
@@ -63,18 +72,21 @@
         </p>
       </section>
 
-      <!-- Medical Disclaimer Container -->
+      <!-- حاوية التنبيه الطبي (يملؤها الجافاسكريبت) -->
       <div id="disclaimer-container"></div>
 
-      <!-- Diseases Grid Container -->
+      <!-- حاوية بطاقات الأمراض (يملؤها الجافاسكريبت) -->
       <section aria-labelledby="diseases-title">
         <h2 id="diseases-title" style="text-align: center; margin-top: var(--space-8);">تصفح الأمراض المزمنة</h2>
-        <div id="diseases-container"></div>
+        <div id="diseases-container">
+          <!-- سيتم وضع البطاقات هنا تلقائياً -->
+        </div>
       </section>
 
     </div>
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <p class="site-footer__disclaimer">
@@ -84,13 +96,20 @@
     </div>
   </footer>
 
-  <!-- Modules -->
+  <!-- ===================== SCRIPTS ===================== -->
   <script type="module">
     import { initTheme } from './js/theme.js';
     import { initHomePage } from './js/pages/home.js';
 
+    // تشغيل الوضع الليلي
     initTheme();
+    
+    // تشغيل الصفحة الرئيسية (جلب البيانات وعرض البطاقات)
     initHomePage();
+    
+    // تحديث السنة في الفوتر تلقائياً
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
