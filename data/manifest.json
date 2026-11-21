@@ -7,6 +7,10 @@
     "chronic-kidney-disease"
   ],
   "quizzes": [
-    "diabetes-basics"
+    "diabetes-basics",
+    "hypertension-basics",
+    "heart-basics",
+    "asthma-basics",
+    "kidney-basics"
   ]
 }
